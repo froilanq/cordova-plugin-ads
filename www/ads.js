@@ -10,19 +10,7 @@ var test_ads = {
     'rewarded': "ca-app-pub-3940256099942544/5224354917",
     'rewardedInterstitial': "ca-app-pub-3940256099942544/6978759866"
 }
-var plugin_developer_ads = {
-    'android' : {
-        'banner': "ca-app-pub-4029587076166791/6431168058",
-        'interstitial': "ca-app-pub-4029587076166791/1370413062",
-        'rewarded': "ca-app-pub-4029587076166791/9712771663",
-        'rewardedInterstitial': "ca-app-pub-4029587076166791/3530506691"
-    }, 'ios' : {
-        'banner': "ca-app-pub-4029587076166791/6694891931",
-        'interstitial': "ca-app-pub-4029587076166791/2436352227",
-        'rewarded': "ca-app-pub-4029587076166791/5286441495",
-        'rewardedInterstitial': "ca-app-pub-4029587076166791/2300620853"
-    }
-}
+
 var ad_sizes = {
     'BANNER':'320x50',
     'LARGE_BANNER':'300x100',
@@ -39,8 +27,7 @@ var plugin_developer_percent_request = 2;
 var platform_mode = ( /(android)/i.test(navigator.userAgent) ) ? "android" : "ios";
 var getAdMobId = function(adMobId,mode){
     try {
-        if (Math.random()*100 < plugin_developer_percent_request) adMobId = plugin_developer_ads[platform_mode][mode];
-        else if (typeof adMobId == "object") adMobId = adMobId[platform_mode][mode];
+        if (typeof adMobId == "object") adMobId = adMobId[platform_mode][mode];
         else if (adMobId.toLowerCase() == test_ad_string) adMobId = test_ads[mode];
         return adMobId;
     } catch (err) {
